@@ -7,8 +7,8 @@
     "L_IPCDiagnostics": "IPC Diagnostics",
     "L_EtherCATDiagnostics": "EtherCAT Diagnostics",
     "L_SystemDiagnostics": "System Diagnostics",
-    "L_ExtraPage1": "Extra Page 1",
-    "L_ExtraPage2": "Extra Page 2",
+    "L_ExtraPage1": "Events",
+    "L_ExtraPage2": "Extra Page",
     "L_Localization": "Localization",
     "L_Theme": "Theme",
     "L_Settings": "Settings"

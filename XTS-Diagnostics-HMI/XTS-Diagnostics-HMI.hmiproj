@@ -12,7 +12,7 @@
     <HmiTitle>XTS_Diagnostics_HMI</HmiTitle>
     <HmiVerboseLevel>0</HmiVerboseLevel>
     <HmiVersion>1.0.0.0</HmiVersion>
-    <HmiCommunicationServerPort>3000</HmiCommunicationServerPort>
+    <HmiCommunicationServerPort>3001</HmiCommunicationServerPort>
     <HmiLogTcHmiServerMessages>false</HmiLogTcHmiServerMessages>
     <HmiLogDesignerModeComMessages>false</HmiLogDesignerModeComMessages>
     <HmiDefaultLanguage>client</HmiDefaultLanguage>
@@ -25,7 +25,7 @@
     <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
     <HmiCommunicationServerPublicPort>3443</HmiCommunicationServerPublicPort>
     <HmiInitial>14.3.683.1</HmiInitial>
-    <HmiRecent>14.3.683.1</HmiRecent>
+    <HmiRecent>14.18.57.1</HmiRecent>
     <HmiServerNodeAdvancedView>False</HmiServerNodeAdvancedView>
     <HmiServerNodeAdvancedSettingsView>True</HmiServerNodeAdvancedSettingsView>
   </PropertyGroup>
@@ -92,7 +92,7 @@
   <PropertyGroup>
     <PostBuildEventDependsOn />
   </PropertyGroup>
-  <Target Name="PostBuildEvent" Condition="'$(PostBuildEvent)' != '' and ('$(RunPostBuildEvent)'=='Always' or '$(RunPostBuildEvent)'=='OnOutputUpdated')" DependsOnTargets="$(PostBuildEventDependsOn)">
+  <Target Name="PostBuildEvent" Condition="'$(PostBuildEvent)' != '' and ('$(RunPostBuildEvent)'=='Always' or '$(RunPostBuildEvent)'=='OnBuildSuccess' or '$(RunPostBuildEvent)'=='OnOutputUpdated')" DependsOnTargets="$(PostBuildEventDependsOn)">
     <Exec WorkingDirectory="$(OutDir)" Command="$(PostBuildEvent)" />
   </Target>
   <Target Name="GetFrameworkPaths" />
@@ -138,6 +138,15 @@
     <Content Include="Server\ADS\ADS.Config.default.json" />
     <Content Include="Server\ADS\ADS.Config.default.json" />
     <Content Include="Server\ADS\ADS.Config.remote.json" />
+    <Content Include="Server\TcHmiEventLogger\TcHmiEventLogger.Config.default.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiEventLogger\TcHmiEventLogger.Config.remote.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiEventLogger\TcHmiEventLogger.Storage.json">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="UserControls\Module.usercontrol">
       <SubType>Content</SubType>
     </Content>
@@ -161,6 +170,7 @@
     <Folder Include="KeyboardLayouts\" />
     <Folder Include="Localization" />
     <Folder Include="Functions" />
+    <Folder Include="Server\TcHmiEventLogger" />
     <Folder Include="UserControls" />
     <Folder Include="Pages\" />
     <Folder Include="Pages\SystemDiagnostics\" />

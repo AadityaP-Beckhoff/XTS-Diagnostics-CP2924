@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en" class="tchmi-html-designer">
+<head>
+  <meta charset="utf-8">
+  <title>XTS_Diagnostics_HMI</title>
+  <meta name="tchmi-buildtime" content="2026-10-14T14:22:02">
+
+  <!-- target-densitydpi=device-dpi -->
+  <meta name="viewport" content="width=device-width"><script>
+	 TCHMI_CONSOLE_LOG_LEVEL  = 0;
+	 TCHMI_CONSOLE_LOG_TCHMISERVER_MESSAGES  = false;
+	 TCHMI_CONSOLE_LOG_ENGINEERING_COM_MESSAGES  = false;
+</script><script>
+	TCHMI_TARGET_PARTIAL = new URL(window.location.href).searchParams.get('TargetPartial') ?? undefined;
+</script><script>TCHMI_NUGET_METADATA = {
+  "Beckhoff.TwinCAT.HMI.BaseTemplate": {
+    "version": "14.7.4",
+    "authors": "Beckhoff",
+    "title": "BaseTemplate",
+    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides controls for TwinCAT HMI project templates."
+  },
+  "Beckhoff.TwinCAT.HMI.Controls": {
+    "version": "14.9.11",
+    "authors": "Beckhoff",
+    "title": "Controls",
+    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the controls for the TwinCAT HMI client."
+  },
+  "Beckhoff.TwinCAT.HMI.EcDiagnostics": {
+    "version": "25.0.122",
+    "authors": "",
+    "title": "",
+    "description": ""
+  },
+  "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl": {
+    "version": "14.7.11",
+    "authors": "Beckhoff",
+    "title": "EcDiagnosticsControl",
+    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides a control for fieldbus diagnostics of EtherCAT topologies in TwinCAT HMI applications."
+  },
+  "Beckhoff.TwinCAT.HMI.EventLogger": {
+    "version": "25.0.122",
+    "authors": "",
+    "title": "",
+    "description": ""
+  },
+  "Beckhoff.TwinCAT.HMI.Framework": {
+    "version": "14.7.23",
+    "authors": "Beckhoff",
+    "title": "Framework",
+    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides the client framework for the TwinCAT HMI."
+  },
+  "Beckhoff.TwinCAT.HMI.Functions": {
+    "version": "14.7.3",
+    "authors": "Beckhoff",
+    "title": "Functions",
+    "description": "TwinCAT HMI is a development environment for web-based HMIs (Human Machine Interfaces). This package provides functions for use in the \"Actions and Conditions Editor\" and symbol expressions."
+  },
+  "Beckhoff.TwinCAT.HMI.Mdp": {
+    "version": "25.0.122",
+    "authors": "",
+    "title": "",
+    "description": ""
+  },
+  "Beckhoff.TwinCAT.HMI.Server.Engineering": {
+    "version": "25.0.122",
+    "authors": "",
+    "title": "",
+    "description": ""
+  },
+  "Beckhoff.TwinCAT.HMI.XTS": {
+    "version": "4.4.3",
+    "authors": "",
+    "title": "",
+    "description": ""
+  },
+  "Beckhoff.TwinCAT.HMI.XTS.Controls": {
+    "version": "4.4.5",
+    "authors": "Beckhoff",
+    "title": "Beckhoff.TwinCAT.XTS.Controls",
+    "description": "TwinCAT HMI Controls for XTS."
+  },
+  "Microsoft.TypeScript.MSBuild": {
+    "version": "5.9.3",
+    "authors": "",
+    "title": "",
+    "description": ""
+  },
+  "TcHmiExtendedControls": {
+    "version": "1.1.6",
+    "authors": "SPT",
+    "title": "TcHmiExtendedControls",
+    "description": "Basic controls and functions which extend or complement existing TcHmi controls and functions."
+  }
+};
+</script>
+
+  <script>
+		TCHMI_ENGINEERING = true;
+		TCHMI_DESIGNER = true;
+		TCHMI_CONFIG_OVERRIDE = {
+			"basePath": "Beckhoff.TwinCAT.HMI.Framework",
+			"tcHmiServer": {
+				"websocketOverwrite": {
+					"host": "127.0.0.1",
+					"port": 3001
+				},
+				"websocketIntervalTime": 200
+			}
+		};
+
+   	    window.onload = function load() {
+			if ((!('TcHmi' in window) || !window.TcHmi.System) && document.body) {
+				document.body.style.background = '#C8C8C8';
+				document.body.innerHTML = 'TwinCAT HMI Framework could not be loaded.';
+			}
+			window.onload = null;
+		};
+  </script>
+  <script type="importmap">
+{
+  "imports": {
+    "Beckhoff.TwinCAT.HMI.BaseTemplate/": "./Beckhoff.TwinCAT.HMI.BaseTemplate/",
+    "Beckhoff.TwinCAT.HMI.BaseTemplate": "./Beckhoff.TwinCAT.HMI.BaseTemplate/index.esm.js",
+    "Beckhoff.TwinCAT.HMI.Controls/": "./Beckhoff.TwinCAT.HMI.Controls/",
+    "Beckhoff.TwinCAT.HMI.Controls": "./Beckhoff.TwinCAT.HMI.Controls/index.esm.js",
+    "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl/": "./Beckhoff.TwinCAT.HMI.EcDiagnosticsControl/",
+    "Beckhoff.TwinCAT.HMI.EcDiagnosticsControl": "./Beckhoff.TwinCAT.HMI.EcDiagnosticsControl/index.esm.js",
+    "Beckhoff.TwinCAT.HMI.Framework/": "./Beckhoff.TwinCAT.HMI.Framework/",
+    "Beckhoff.TwinCAT.HMI.Framework": "./Beckhoff.TwinCAT.HMI.Framework/index.esm.js",
+    "Beckhoff.TwinCAT.HMI.Functions/": "./Beckhoff.TwinCAT.HMI.Functions/",
+    "Beckhoff.TwinCAT.HMI.Functions": "./Beckhoff.TwinCAT.HMI.Functions/index.esm.js",
+    "Beckhoff.TwinCAT.HMI.XTS.Controls/": "./Beckhoff.TwinCAT.HMI.XTS.Controls/",
+    "Beckhoff.TwinCAT.HMI.XTS.Controls": "./Beckhoff.TwinCAT.HMI.XTS.Controls/index.esm.js",
+    "TcHmiExtendedControls/": "./TcHmiExtendedControls/",
+    "TcHmiExtendedControls": "./TcHmiExtendedControls/index.esm.js"
+  },
+  "scopes": {
+    "./Beckhoff.TwinCAT.HMI.Framework/": {
+      "acorn": "./Beckhoff.TwinCAT.HMI.Framework/Lib/acorn/acorn.mjs"
+    }
+  }
+}
+</script>
+
+<script src="/Beckhoff.TwinCAT.HMI.Framework/Lib/tslib.js" defer=""></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/Lib/EsHelper.js" defer=""></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/Lib/jquery.min.js" defer=""></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Main.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiControl/TcHmiControl.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/index/TcHmi.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiContainerControl/TcHmiContainerControl.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiPartial/TcHmiPartial.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiPopup/TcHmiPopup.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiContainer/TcHmiContainer.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiContent/TcHmiContent.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiGrid/TcHmiGrid.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiGridContainer/TcHmiGridContainer.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiFlexContainer/TcHmiFlexContainer.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiHtmlHost/TcHmiHtmlHost.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiUserControl/TcHmiUserControl.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiView/TcHmiView.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiRegion/TcHmiRegion.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Framework/dist/Controls/System/TcHmiUserControlHost/TcHmiUserControlHost.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiEventGrid/EventClassesProvider/EventClassesProvider.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiAccordionRegion/TcHmiAccordionRegion.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiAdsState/TcHmiAdsState.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiAudio/TcHmiAudio.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiButton/TcHmiButton.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiBarChart/TcHmiBarChart.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiCalculator/TcHmiCalculator.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/TcHmiCalculator/Lib/math.js" defer=""></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiCheckbox/TcHmiCheckbox.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiCombobox/TcHmiCombobox.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDatagrid/TcHmiDatagrid.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateTimeDisplay/TcHmiDateTimeDisplay.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateTimeInput/TcHmiDateTimeInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateInput/TcHmiDateInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDatePicker/TcHmiDatePicker.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiDateTimePicker/TcHmiDateTimePicker.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiEllipse/TcHmiEllipse.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiEventGrid/TcHmiEventGrid.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiEventLine/TcHmiEventLine.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiFileExplorer/TcHmiFileExplorer.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiHorizontalBarChart/TcHmiHorizontalBarChart.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiIFrame/TcHmiIFrame.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiImage/TcHmiImage.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiInput/TcHmiInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/UiProvider/loader.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiKeyboard/TcHmiKeyboard.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiPieChart/TcHmiPieChart.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiLine/TcHmiLine.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiLinearGauge/TcHmiLinearGauge.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiLineChart/TcHmiLineChart.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiLoadingSpinner/TcHmiLoadingSpinner.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiLocalizationSelect/TcHmiLocalizationSelect.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiMultiState/TcHmiMultiState.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiNumericInput/TcHmiNumericInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiObjectBrowser/TcHmiObjectBrowser.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiPasswordInput/TcHmiPasswordInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiPermissionManagement/TcHmiPermissionManagement.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiPolygon/TcHmiPolygon.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiPolyline/TcHmiPolyline.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiProgressBar/TcHmiProgressBar.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiRadialGauge/TcHmiRadialGauge.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiRadioButton/TcHmiRadioButton.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiRecipeEdit/TcHmiRecipeEdit.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiRecipeSelect/TcHmiRecipeSelect.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiRectangle/TcHmiRectangle.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiSparkline/TcHmiSparkline.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiSpinboxInput/TcHmiSpinboxInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiStateImage/TcHmiStateImage.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTabNavigation/TcHmiTabNavigation.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTachometer/TcHmiTachometer.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTextblock/TcHmiTextblock.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTextbox/TcHmiTextbox.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiThemeSelect/TcHmiThemeSelect.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiThermometer/TcHmiThermometer.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTimespanInput/TcHmiTimespanInput.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTimespanPicker/TcHmiTimespanPicker.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiToggleButton/TcHmiToggleButton.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiToggleSwitch/TcHmiToggleSwitch.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTreeView/TcHmiTreeView.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTrendLineChart/TcHmiTrendLineChart.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiTrendSparkline/TcHmiTrendSparkline.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiUserGuidance/TcHmiUserGuidance.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiUserManagement/TcHmiUserManagement.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Controls/dist/TcHmiVideo/TcHmiVideo.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiAccordionNavigation/TcHmiAccordionNavigation.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiBreadcrumb/TcHmiBreadcrumb.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiBurgerMenu/TcHmiBurgerMenu.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiHeader/TcHmiHeader.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiNavigation/TcHmiNavigation.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.BaseTemplate/dist/TcHmiResponsiveBehaviour/TcHmiResponsiveBehaviour.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.EcDiagnosticsControl/dist/TcHmiEcDiagnostics/TcHmiEcDiagnostics.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.EcDiagnosticsControl/dist/TcHmiEcSlave/TcHmiEcSlave.esm.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ActivateRecipe.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/BigIntToNumber.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/CheckAccess.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/CheckBinding.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/CheckBindingEx.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/Concatenate.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ConvertBooleanToEnum.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ConvertBooleanToVisibility.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/CreateAuditLogEntry.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/CreateBinding.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/Decrement.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/DownloadRecipes.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/DownloadRecipeTypes.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/EnumToString.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/EnumToMemberName.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ExportEvents.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ForceLogout.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ForceLogoutEx.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/FormatString.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GaugeValueFormatter.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GetAutoOpenSystemKeyboard.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GetElementByIndex.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GetLocale.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GetLocalizedText.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GetRegisteredLocales.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GetTheme.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/GoToLoginPage.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/Increment.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/IsSafeInteger.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/LineChartTooltipFormatter.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/Log.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/Login.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/LoginEx.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/Logout.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/LogoutEx.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/NumberToBigInt.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/NumberToSolidColor.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/RemoveBinding.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/SetAttributeToThemeValue.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/SetAutoOpenSystemKeyboard.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/SetElementByIndex.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/SetLocaleEx.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/SetLocale.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/SetTheme.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/StartInterval.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/StopInterval.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/SymbolExists.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/TeachAsNewRecipe.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/Wait.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/TcUiClientIsAvailable.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/TcUiClientScreenshot.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/TcUiClientKiosk.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/TeachRecipe.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ToDateString.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ToDateTimeString.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ToLowerCase.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ToTimeString.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/ToUpperCase.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/TrimToLength.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.Functions/UploadRecipeFiles.js" type="module"></script>
+<script src="/Beckhoff.TwinCAT.HMI.XTS.Controls/XTS/Controls/XtsView/bin/TcXtsHmiView.js" defer=""></script>
+<script src="/TcHmiExtendedControls/Global/GlobalSrc.js" defer=""></script>
+<script src="/TcHmiExtendedControls/LabeledInput/LabeledInput.js" defer=""></script>
+<script src="/TcHmiExtendedControls/LinearGauge/LinearGauge.js" defer=""></script>
+<script src="/TcHmiExtendedControls/RangeSlider/RangeSlider.js" defer=""></script>
+<script src="/TcHmiExtendedControls/EnumToString/EnumToString.js" defer=""></script>
+<script src="/TcHmiExtendedControls/StatusIndicator/StatusIndicator.js" defer=""></script>
+<script src="/TcHmiExtendedControls/EnumRadioButton/EnumRadioButton.js" defer=""></script>
+<script src="/TcHmiExtendedControls/RadialGauge/RadialGauge.js" defer=""></script>
+<script src="/TcHmiExtendedControls/MultiselectCombobox/MultiselectCombobox.js" defer=""></script>
+<script src="/TcHmiExtendedControls/LabeledNumericInput/LabeledNumericInput.js" defer=""></script>
+<script src="/TcHmiExtendedControls/ConfirmationButton/ConfirmationButton.js" defer=""></script>
+<script src="/TcHmiExtendedControls/Blink/Blink.js" defer=""></script>
+<script src="/TcHmiExtendedControls/DataDisplayTile/DataDisplayTile.js" defer=""></script>
+<script src="/TcHmiExtendedControls/DetailedNumpad/DetailedNumpad.js" defer=""></script>
+<script src="/TcHmiExtendedControls/DatagridRowStyling/DatagridRowStyling.js" defer=""></script>
+<script src="/TcHmiExtendedControls/UseSystemTheme/UseSystemTheme.js" defer=""></script>
+<script src="/Functions/CreateIndirectArrayBinding.js" defer=""></script>
+</head>
+<body class="tchmi-body-designer">
+	<div id="XTSDiagnostics" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-partial-key="/Pages/XTSDiagnostics.content">
+
+<div id="XTSDiagnosticsGrid" data-tchmi-type="TcHmi.Controls.System.TcHmiGrid" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-top="6" data-tchmi-top-unit="%" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%">
+
+<script data-tchmi-target-attribute="data-tchmi-column-options" type="application/json">
+[
+  {
+    "overflow": false,
+    "width": 1,
+    "widthMode": "Value",
+    "widthUnit": "factor"
+  },
+  {
+    "width": 1,
+    "widthMode": "Value",
+    "widthUnit": "factor"
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-row-options" type="application/json">
+[
+  {
+    "height": 1,
+    "heightMode": "Value",
+    "heightUnit": "factor",
+    "overflow": false
+  },
+  {
+    "height": 6.0,
+    "heightMode": "Value",
+    "heightUnit": "factor"
+  }
+]
+</script>
+<div data-tchmi-grid-row-index="1" data-tchmi-grid-column-index="0" id="MoverDiagnostics" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-target-user-control="UserControls/Mover.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="%" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-moverdata="%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::ActiveMoverCount%/s%" data-tchmi-movertype="%s%MoverDiagData%/s%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%">
+
+
+</div>
+<div id="ModuleDiagnostics" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-grid-column-index="1" data-tchmi-grid-row-index="1" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Module.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-right="0" data-tchmi-bottom="0">
+
+
+</div>
+<div id="MoverSelector" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiCombobox" data-tchmi-auto-focus-out="True" data-tchmi-combobox-text="Mover 1" data-tchmi-height="43" data-tchmi-height-unit="%" data-tchmi-left="4" data-tchmi-left-unit="%" data-tchmi-top="32" data-tchmi-top-unit="%" data-tchmi-right-unit="%" data-tchmi-right="62" data-tchmi-data-height="48" data-tchmi-selected-id="0" data-tchmi-selected-index="0">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "headline-2"
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
+[
+  {
+    "id": 0.0,
+    "text": "Mover 1",
+    "value": "0"
+  },
+  {
+    "id": 1.0,
+    "text": "Mover 2",
+    "value": "1"
+  },
+  {
+    "id": 2.0,
+    "text": "Mover 3",
+    "value": "2"
+  },
+  {
+    "id": 3.0,
+    "text": "Mover 4",
+    "value": "3"
+  },
+  {
+    "id": 4.0,
+    "text": "Mover 5",
+    "value": "4"
+  },
+  {
+    "id": 5.0,
+    "text": "Mover 6",
+    "value": "5"
+  },
+  {
+    "id": 6.0,
+    "text": "Mover 7",
+    "value": "6"
+  }
+]
+</script>
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onSelectionChanged",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "ActPos"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActPos%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onSelectionChanged"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "ActVelo"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActVelo%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onSelectionChanged"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "NcModuloPos"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::NcModuloPos%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onSelectionChanged"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%MoverDiagnostics::ActiveMoverCount%/ctrl%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::ActiveMoverCount%/s%"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%MoverDiagnostics::DetectedMoverCount%/ctrl%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::DetectedMoverCount%/s%"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onAttached",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "ActPos"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActPos%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onUserInteractionFinished"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "ActVelo"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActVelo%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onUserInteractionFinished"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "NcModuloPos"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::NcModuloPos%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onUserInteractionFinished"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%MoverDiagnostics::ActiveMoverCount%/ctrl%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::ActiveMoverCount%/s%"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%MoverDiagnostics::DetectedMoverCount%/ctrl%",
+        "value": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/INT",
+          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::DetectedMoverCount%/s%"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Beckhoff.StartInterval",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/Interval",
+            "value": "resubscribeSymbols"
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div data-tchmi-grid-row-index="0" data-tchmi-grid-column-index="1" id="ModuleSelector" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiCombobox" data-tchmi-auto-focus-out="True" data-tchmi-combobox-text="Module 1" data-tchmi-height="43" data-tchmi-height-unit="%" data-tchmi-left="4" data-tchmi-left-unit="%" data-tchmi-top="32" data-tchmi-top-unit="%" data-tchmi-right-unit="%" data-tchmi-right="62" data-tchmi-data-height="48" data-tchmi-selected-id="0" data-tchmi-selected-index="0">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "headline-2"
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
+[
+  {
+    "id": 0.0,
+    "text": "Module 1",
+    "value": "0"
+  },
+  {
+    "id": 1.0,
+    "text": "Module 2",
+    "value": "1"
+  },
+  {
+    "id": 2.0,
+    "text": "Module 3",
+    "value": "2"
+  },
+  {
+    "id": 3.0,
+    "text": "Module 4",
+    "value": "3"
+  },
+  {
+    "id": 4.0,
+    "text": "Module 5",
+    "value": "4"
+  },
+  {
+    "id": 5.0,
+    "text": "Module 6",
+    "value": "5"
+  },
+  {
+    "id": 6.0,
+    "text": "Module 7",
+    "value": "6"
+  },
+  {
+    "id": 7.0,
+    "text": "Module 8",
+    "value": "7"
+  },
+  {
+    "id": 8.0,
+    "text": "Module 9",
+    "value": "8"
+  },
+  {
+    "id": 9.0,
+    "text": "Module 10",
+    "value": "9"
+  },
+  {
+    "id": 10.0,
+    "text": "Module 11",
+    "value": "10"
+  },
+  {
+    "id": 11.0,
+    "text": "Module 12",
+    "value": "11"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onSelectionChanged",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "AmplifierI2T"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::AmplifierI2T%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onSelectionChanged"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "DCLinkVoltage"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DcLinkVoltage%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onSelectionChanged"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "DriveState"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DriveState%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onSelectionChanged"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "PCBTemperature"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::PcbTemperatures%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onSelectionChanged"
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onAttached",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "AmplifierI2T"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::AmplifierI2T%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onUserInteractionFinished"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "DCLinkVoltage"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DcLinkVoltage%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onUserInteractionFinished"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "DriveState"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DriveState%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onUserInteractionFinished"
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:framework#/definitions/Control",
+            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
+            "value": "PCBTemperature"
+          },
+          {
+            "objectType": "Symbol",
+            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::PcbTemperatures%/s%"
+          },
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/Number",
+            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": false
+          },
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": "onUserInteractionFinished"
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "background-container"
+]
+</script>
+</div>
+<div id="XTSDiagnostics_Header" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="3" data-tchmi-height-unit="%" data-tchmi-left="2" data-tchmi-left-unit="%" data-tchmi-text="XTS Diagnostics" data-tchmi-top="1" data-tchmi-top-unit="%" data-tchmi-word-wrap="True" data-tchmi-right="80" data-tchmi-right-unit="%" data-tchmi-text-font-size="%f%0.8*%ctrl%XTSDiagnostics_Header::RenderedHeight%/ctrl%%/f%" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center">
+
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
+[
+  "headline-2"
+]
+</script>
+</div>
+</div>
+</body>
+</html>
