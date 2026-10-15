@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>XTS_Diagnostics_HMI</title>
-  <meta name="tchmi-buildtime" content="2026-10-14T15:01:37">
+  <meta name="tchmi-buildtime" content="2026-10-15T11:31:14">
 
   <!-- target-densitydpi=device-dpi -->
   <meta name="viewport" content="width=device-width"><script>
@@ -102,7 +102,7 @@
 			"tcHmiServer": {
 				"websocketOverwrite": {
 					"host": "127.0.0.1",
-					"port": 3001
+					"port": 3002
 				},
 				"websocketIntervalTime": 200
 			}
@@ -313,1091 +313,264 @@
 <script src="/Functions/CreateIndirectArrayBinding.js" defer=""></script>
 </head>
 <body class="tchmi-body-designer">
-	<div id="XTSDiagnostics" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-partial-key="/Pages/XTSDiagnostics.content">
-
-<div id="XTSDiagnosticsGrid" data-tchmi-type="TcHmi.Controls.System.TcHmiGrid" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-top="6" data-tchmi-top-unit="%" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%">
-
-<script data-tchmi-target-attribute="data-tchmi-column-options" type="application/json">
-[
-  {
-    "overflow": false,
-    "width": 1,
-    "widthMode": "Value",
-    "widthUnit": "factor"
-  },
-  {
-    "width": 1,
-    "widthMode": "Value",
-    "widthUnit": "factor"
-  }
+	<div id="Desktop" data-tchmi-type="TcHmi.Controls.System.TcHmiView" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-unit="%" data-tchmi-width="100" data-tchmi-height-unit="%" data-tchmi-height="100" data-tchmi-background-image-width-unit="%" data-tchmi-background-image-height-unit="%" data-tchmi-background-image-width="100" data-tchmi-background-image-height="100" data-tchmi-creator-partial-key="/Desktop.view">
+  
+<div id="Header_Top" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiHeader" data-tchmi-height="80" data-tchmi-left="0" data-tchmi-top="0" data-tchmi-right="0">
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">[
+"divider",
+"divider-top"
 ]
-</script>
+</script><script data-tchmi-target-attribute="data-tchmi-header-items" type="application/json">[
+                {
+                    "itemType": "Image",
+                    "priority": "2",
+                    "itemAlign": "Left",
+                    "prefWidth": 288.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 95.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 128.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "image": "Images/Beckhoff_Logo.svg",
+                    "altText": "Beckhoff",
+                    "targetRegion": "%ctrl%Region_Center%/ctrl%",
+                    "targetContent": "Pages/XTSViewer.content"
+                },
+                {
+                    "itemType": "Text",
+                    "priority": "1",
+                    "itemAlign": "Left",
+                    "prefWidth": 288.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 95.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 128.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "text": "XTS-Diagnostics-HMI"
+                },
+                {
+                    "itemType": "EventLine",
+                    "priority": "5",
+                    "itemAlign": "Right",
+                    "prefWidth": 800.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 288.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "messageFormat": [
+                        {
+                            "name": "timeRaised"
+                        },
+                        {
+                            "text": " | "
+                        },
+                        {
+                            "name": "domain"
+                        },
+                        {
+                            "text": " | "
+                        },
+                        {
+                            "name": "text"
+                        }
+                    ],
+                    "filter": [
+                        {
+                            "path": "domain",
+                            "comparator": "==",
+                            "value": "TcHmiEventLogger"
+                        },
+                        {
+                            "logic": "OR"
+                        },
+                        {
+                            "path": "domain",
+                            "comparator": "==",
+                            "value": "TcHmiAlarm"
+                        }
+                    ]
+                },
+                {
+                    "itemType": "AdsState",
+                    "priority": "3",
+                    "itemAlign": "Right",
+                    "prefWidth": 160.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 48.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "adsRuntime": "TcSysService",
+                    "iconWidth": 48,
+                    "iconWidthUnit": "px",
+                    "text": "TwinCAT",
+                    "textPosition": "Left",
+                    "serverInterval": 1000,
+                    "serverDomain": "ADS",
+                    "stateImages": {
+                        "Fallback": "%tr%TwinCAT_Fallback%/tr%",
+                        "Run": "%tr%TwinCAT_Run%/tr%",
+                        "Stop": "%tr%TwinCAT_Stop%/tr%",
+                        "Config": "%tr%TwinCAT_Config%/tr%",
+                        "Exception": "%tr%TwinCAT_Exception%/tr%"
+                    }
+                },
+                {
+                    "itemType": "AdsState",
+                    "priority": "3",
+                    "itemAlign": "Right",
+                    "prefWidth": 160.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 48.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "adsRuntime": "PLC1",
+                    "iconWidth": 48,
+                    "iconWidthUnit": "px",
+                    "text": "PLC",
+                    "textPosition": "Left",
+                    "serverInterval": 1000,
+                    "serverDomain": "ADS",
+                    "stateImages": {
+                        "Fallback": "%tr%PLC_Fallback%/tr%",
+                        "Run": "%tr%PLC_Run%/tr%",
+                        "Stop": "%tr%PLC_Stop%/tr%",
+                        "Config": "%tr%PLC_Config%/tr%",
+                        "Exception": "%tr%PLC_Exception%/tr%"
+                    }
+                },
+                {
+                    "itemType": "UserManagement",
+                    "priority": "3",
+                    "itemAlign": "Right",
+                    "prefWidth": 288.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 176.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "allowLogout": true,
+                    "allowSwitchUser": false
+                },
+                {
+                    "itemType": "Time",
+                    "priority": "4",
+                    "itemAlign": "Right",
+                    "prefWidth": 128.0,
+                    "prefWidthUnit": "px",
+                    "prefHeight": 48.0,
+                    "prefHeightUnit": "px",
+                    "minWidth": 96.0,
+                    "minWidthUnit": "px",
+                    "classList": [],
+                    "accessRights": [],
+                    "timeDisplayLayout": "TimeDateMultiLine"
+                }
+            ]</script></div><div id="Accordion_Navigation_Left" data-tchmi-type="TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation" data-tchmi-width="320" data-tchmi-left="0" data-tchmi-top="%ctrl%Header_Top::Height%/ctrl%" data-tchmi-bottom="0" data-tchmi-target-region="%ctrl%Region_Center%/ctrl%" data-tchmi-show-back-button="False">
 
-
-
-<script data-tchmi-target-attribute="data-tchmi-row-options" type="application/json">
-[
-  {
-    "height": 1,
-    "heightMode": "Value",
-    "heightUnit": "factor",
-    "overflow": false
-  },
-  {
-    "height": 6.0,
-    "heightMode": "Value",
-    "heightUnit": "factor"
-  }
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">[
+"divider",
+"divider-left"
 ]
-</script>
-<div data-tchmi-grid-row-index="1" data-tchmi-grid-column-index="0" id="MoverDiagnostics" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-target-user-control="UserControls/Mover.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="%" data-tchmi-right="0" data-tchmi-bottom="0" data-tchmi-moverdata="%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::ActiveMoverCount%/s%" data-tchmi-movertype="%s%MoverDiagData%/s%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%">
-
-
-</div>
-<div id="ModuleDiagnostics" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-grid-column-index="1" data-tchmi-grid-row-index="1" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControls/Module.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-right="0" data-tchmi-bottom="0">
-
-
-</div>
-<div id="MoverSelector" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiCombobox" data-tchmi-auto-focus-out="True" data-tchmi-combobox-text="Mover 1" data-tchmi-height="43" data-tchmi-height-unit="%" data-tchmi-left="4" data-tchmi-left-unit="%" data-tchmi-top="32" data-tchmi-top-unit="%" data-tchmi-right-unit="%" data-tchmi-right="62" data-tchmi-data-height="48" data-tchmi-selected-id="0" data-tchmi-selected-index="0">
-<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+</script><script data-tchmi-target-attribute="data-tchmi-navigation-items" type="application/json">[
 {
-  "top": 3,
-  "right": 3,
-  "bottom": 3,
-  "left": 3
-}
-</script>
-
-
-<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
-[
-  "headline-2"
-]
-</script>
-
-<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
-[
-  {
-    "id": 0.0,
-    "text": "Mover 1",
-    "value": "0"
-  },
-  {
-    "id": 1.0,
-    "text": "Mover 2",
-    "value": "1"
-  },
-  {
-    "id": 2.0,
-    "text": "Mover 3",
-    "value": "2"
-  },
-  {
-    "id": 3.0,
-    "text": "Mover 4",
-    "value": "3"
-  },
-  {
-    "id": 4.0,
-    "text": "Mover 5",
-    "value": "4"
-  },
-  {
-    "id": 5.0,
-    "text": "Mover 6",
-    "value": "5"
-  },
-  {
-    "id": 6.0,
-    "text": "Mover 7",
-    "value": "6"
-  },
-  {
-    "id": 7.0,
-    "text": "Mover 8",
-    "value": "7"
-  },
-  {
-    "id": 8.0,
-    "text": "Mover 9",
-    "value": "8"
-  },
-  {
-    "id": 9.0,
-    "text": "Mover 10",
-    "value": "9"
-  },
-  {
-    "id": 10.0,
-    "text": "Mover 11",
-    "value": "10"
-  },
-  {
-    "id": 11.0,
-    "text": "Mover 12",
-    "value": "11"
-  },
-  {
-    "id": 12.0,
-    "text": "Mover 13",
-    "value": "12"
-  },
-  {
-    "id": 13.0,
-    "text": "Mover 14",
-    "value": "13"
-  },
-  {
-    "id": 14.0,
-    "text": "Mover 15",
-    "value": "14"
-  },
-  {
-    "id": 15.0,
-    "text": "Mover 16",
-    "value": "15"
-  },
-  {
-    "id": 16.0,
-    "text": "Mover 17",
-    "value": "16"
-  },
-  {
-    "id": 17.0,
-    "text": "Mover 18",
-    "value": "17"
-  },
-  {
-    "id": 18.0,
-    "text": "Mover 19",
-    "value": "18"
-  },
-  {
-    "id": 19.0,
-    "text": "Mover 20",
-    "value": "19"
-  },
-  {
-    "id": 20.0,
-    "text": "Mover 21",
-    "value": "20"
-  },
-  {
-    "id": 21.0,
-    "text": "Mover 22",
-    "value": "21"
-  },
-  {
-    "id": 22.0,
-    "text": "Mover 23",
-    "value": "22"
-  },
-  {
-    "id": 23.0,
-    "text": "Mover 24",
-    "value": "23"
-  },
-  {
-    "id": 24.0,
-    "text": "Mover 25",
-    "value": "24"
-  },
-  {
-    "id": 25.0,
-    "text": "Mover 26",
-    "value": "25"
-  },
-  {
-    "id": 26.0,
-    "text": "Mover 27",
-    "value": "26"
-  },
-  {
-    "id": 27.0,
-    "text": "Mover 28",
-    "value": "27"
-  },
-  {
-    "id": 28.0,
-    "text": "Mover 29",
-    "value": "28"
-  },
-  {
-    "id": 29.0,
-    "text": "Mover 30",
-    "value": "29"
-  },
-  {
-    "id": 30.0,
-    "text": "Mover 31",
-    "value": "30"
-  },
-  {
-    "id": 31.0,
-    "text": "Mover 32",
-    "value": "31"
-  },
-  {
-    "id": 32.0,
-    "text": "Mover 33",
-    "value": "32"
-  },
-  {
-    "id": 33.0,
-    "text": "Mover 34",
-    "value": "33"
-  },
-  {
-    "id": 34.0,
-    "text": "Mover 35",
-    "value": "34"
-  },
-  {
-    "id": 35.0,
-    "text": "Mover 36",
-    "value": "35"
-  },
-  {
-    "id": 36.0,
-    "text": "Mover 37",
-    "value": "36"
-  },
-  {
-    "id": 37.0,
-    "text": "Mover 38",
-    "value": "37"
-  },
-  {
-    "id": 38.0,
-    "text": "Mover 39",
-    "value": "38"
-  },
-  {
-    "id": 39.0,
-    "text": "Mover 40",
-    "value": "39"
-  },
-  {
-    "id": 40.0,
-    "text": "Mover 41",
-    "value": "40"
-  },
-  {
-    "id": 41.0,
-    "text": "Mover 42",
-    "value": "41"
-  },
-  {
-    "id": 42.0,
-    "text": "Mover 43",
-    "value": "42"
-  },
-  {
-    "id": 43.0,
-    "text": "Mover 44",
-    "value": "43"
-  },
-  {
-    "id": 44.0,
-    "text": "Mover 45",
-    "value": "44"
-  },
-  {
-    "id": 45.0,
-    "text": "Mover 46",
-    "value": "45"
-  },
-  {
-    "id": 46.0,
-    "text": "Mover 47",
-    "value": "46"
-  },
-  {
-    "id": 47.0,
-    "text": "Mover 48",
-    "value": "47"
-  },
-  {
-    "id": 48.0,
-    "text": "Mover 49",
-    "value": "48"
-  },
-  {
-    "id": 49.0,
-    "text": "Mover 50",
-    "value": "49"
-  },
-  {
-    "id": 50.0,
-    "text": "Mover 51",
-    "value": "50"
-  },
-  {
-    "id": 51.0,
-    "text": "Mover 52",
-    "value": "51"
-  },
-  {
-    "id": 52.0,
-    "text": "Mover 53",
-    "value": "52"
-  },
-  {
-    "id": 53.0,
-    "text": "Mover 54",
-    "value": "53"
-  },
-  {
-    "id": 54.0,
-    "text": "Mover 55",
-    "value": "54"
-  },
-  {
-    "id": 55.0,
-    "text": "Mover 56",
-    "value": "55"
-  },
-  {
-    "id": 56.0,
-    "text": "Mover 57",
-    "value": "56"
-  },
-  {
-    "id": 57.0,
-    "text": "Mover 58",
-    "value": "57"
-  },
-  {
-    "id": 58.0,
-    "text": "Mover 59",
-    "value": "58"
-  },
-  {
-    "id": 59.0,
-    "text": "Mover 60",
-    "value": "59"
-  },
-  {
-    "id": 60.0,
-    "text": "Mover 61",
-    "value": "60"
-  },
-  {
-    "id": 61.0,
-    "text": "Mover 62",
-    "value": "61"
-  }
-]
-</script>
-
-
-
-
-
-
-
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onSelectionChanged",
-    "actions": [
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "ActPos"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActPos%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onSelectionChanged"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "ActVelo"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActVelo%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onSelectionChanged"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "NcModuloPos"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::NcModuloPos%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onSelectionChanged"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "WriteToSymbol",
-        "active": true,
-        "symbolExpression": "%ctrl%MoverDiagnostics::ActiveMoverCount%/ctrl%",
-        "value": {
-          "objectType": "Symbol",
-          "valueType": "tchmi:general#/definitions/INT",
-          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::ActiveMoverCount%/s%"
-        },
-        "asyncWait": true
-      },
-      {
-        "objectType": "WriteToSymbol",
-        "active": true,
-        "symbolExpression": "%ctrl%MoverDiagnostics::DetectedMoverCount%/ctrl%",
-        "value": {
-          "objectType": "Symbol",
-          "valueType": "tchmi:general#/definitions/INT",
-          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::DetectedMoverCount%/s%"
-        },
-        "asyncWait": true
-      }
-    ]
-  },
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onAttached",
-    "actions": [
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "ActPos"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActPos%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onUserInteractionFinished"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "ActVelo"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::ScopeVariables::ActVelo%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onUserInteractionFinished"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%MoverDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "NcModuloPos"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Movers[0]::NcModuloPos%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onUserInteractionFinished"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "WriteToSymbol",
-        "active": true,
-        "symbolExpression": "%ctrl%MoverDiagnostics::ActiveMoverCount%/ctrl%",
-        "value": {
-          "objectType": "Symbol",
-          "valueType": "tchmi:general#/definitions/INT",
-          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::ActiveMoverCount%/s%"
-        },
-        "asyncWait": true
-      },
-      {
-        "objectType": "WriteToSymbol",
-        "active": true,
-        "symbolExpression": "%ctrl%MoverDiagnostics::DetectedMoverCount%/ctrl%",
-        "value": {
-          "objectType": "Symbol",
-          "valueType": "tchmi:general#/definitions/INT",
-          "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::DetectedMoverCount%/s%"
-        },
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Beckhoff.StartInterval",
-        "fnParams": [
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/Interval",
-            "value": "resubscribeSymbols"
-          }
-        ],
-        "asyncWait": true
-      }
-    ]
-  }
-]
-</script>
-</div>
-<div data-tchmi-grid-row-index="0" data-tchmi-grid-column-index="1" id="ModuleSelector" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiCombobox" data-tchmi-auto-focus-out="True" data-tchmi-combobox-text="Module 1" data-tchmi-height="43" data-tchmi-height-unit="%" data-tchmi-left="4" data-tchmi-left-unit="%" data-tchmi-top="32" data-tchmi-top-unit="%" data-tchmi-right-unit="%" data-tchmi-right="62" data-tchmi-data-height="48" data-tchmi-selected-id="0" data-tchmi-selected-index="0">
-<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+ "id": "XTSViewer",
+ "name": "%l%L_XTSViewer%/l%",
+ "content": "Pages/XTSViewer.content",
+ "icon": "%tr%TR_Icon_XTSViewer_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_XTSViewer_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_XTSViewer_pressed%/tr%"},
 {
-  "top": 3,
-  "right": 3,
-  "bottom": 3,
-  "left": 3
-}
-</script>
-
-
-<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
-[
-  "headline-2"
+ "id": "XTSDiagnostics",
+ "name": "%l%L_XTSDiagnostics%/l%",
+ "content": "Pages/XTSDiagnostics.content",
+ "icon": "%tr%TR_Icon_XTSDiagnostics_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_XTSDiagnostics_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_XTSDiagnostics_pressed%/tr%"},
+{
+ "id": "SystemDiagnostics",
+ "name": "%l%L_SystemDiagnostics%/l%",
+ "icon": "%tr%TR_Icon_SystemDiagnostics_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_SystemDiagnostics_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_SystemDiagnostics_pressed%/tr%",
+ "subItems": [
+ {
+ "id": "IPCDiagnostics",
+ "name": "%l%L_IPCDiagnostics%/l%",
+ "content": "Pages/SystemDiagnostics/IPCDiagnostics.content",
+ "icon": "%tr%TR_Icon_IPCDiagnostics_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_IPCDiagnostics_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_IPCDiagnostics_pressed%/tr%"},
+{
+ "id": "EtherCATDiagnostics",
+ "name": "%l%L_EtherCATDiagnostics%/l%",
+ "content": "Pages/SystemDiagnostics/EtherCATDiagnostics.content",
+ "icon": "%tr%TR_Icon_EtherCATDiagnostics_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_EtherCATDiagnostics_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_EtherCATDiagnostics_pressed%/tr%"}
 ]
-</script>
+},
+{
+ "id": "ExtraPage1",
+ "name": "%l%L_ExtraPage1%/l%",
+ "content": "Pages/ExtraPage1.content",
+ "icon": "%tr%TR_Icon_ExtraPage1_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_ExtraPage1_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_ExtraPage1_pressed%/tr%"},
+{
+ "id": "ExtraPage2",
+ "name": "%l%L_ExtraPage2%/l%",
+ "content": "Pages/ExtraPage2.content",
+ "icon": "%tr%TR_Icon_ExtraPage2_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_ExtraPage2_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_ExtraPage2_pressed%/tr%"},
+{
+ "id": "Settings",
+ "name": "%l%L_Settings%/l%",
+ "content": "Pages/Settings.content",
+ "icon": "%tr%TR_Icon_Settings_normal%/tr%",
+ "iconActive": "%tr%TR_Icon_Settings_active%/tr%",
+ "iconPressed": "%tr%TR_Icon_Settings_pressed%/tr%"}
+]</script></div><div id="Region_Center" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-left="%ctrl%Accordion_Navigation_Left::Width%/ctrl%" data-tchmi-top="%ctrl%Header_Top::Height%/ctrl%" data-tchmi-scrolling="Yes" data-tchmi-bottom="0" data-tchmi-right="0">
 
-<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
-[
-  {
-    "id": 0.0,
-    "text": "Module 1",
-    "value": "0"
-  },
-  {
-    "id": 1.0,
-    "text": "Module 2",
-    "value": "1"
-  },
-  {
-    "id": 2.0,
-    "text": "Module 3",
-    "value": "2"
-  },
-  {
-    "id": 3.0,
-    "text": "Module 4",
-    "value": "3"
-  },
-  {
-    "id": 4.0,
-    "text": "Module 5",
-    "value": "4"
-  },
-  {
-    "id": 5.0,
-    "text": "Module 6",
-    "value": "5"
-  },
-  {
-    "id": 6.0,
-    "text": "Module 7",
-    "value": "6"
-  },
-  {
-    "id": 7.0,
-    "text": "Module 8",
-    "value": "7"
-  },
-  {
-    "id": 8.0,
-    "text": "Module 9",
-    "value": "8"
-  },
-  {
-    "id": 9.0,
-    "text": "Module 10",
-    "value": "9"
-  },
-  {
-    "id": 10.0,
-    "text": "Module 11",
-    "value": "10"
-  },
-  {
-    "id": 11.0,
-    "text": "Module 12",
-    "value": "11"
-  }
-]
-</script>
-
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onSelectionChanged",
-    "actions": [
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "AmplifierI2T"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::AmplifierI2T%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onSelectionChanged"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "DCLinkVoltage"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DcLinkVoltage%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onSelectionChanged"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "DriveState"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DriveState%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onSelectionChanged"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "PCBTemperature"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::PcbTemperatures%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onSelectionChanged"
-          }
-        ],
-        "asyncWait": true
-      }
-    ]
-  },
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onAttached",
-    "actions": [
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "AmplifierI2T"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::AmplifierI2T%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onUserInteractionFinished"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "DCLinkVoltage"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DcLinkVoltage%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onUserInteractionFinished"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "DriveState"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::DriveState%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onUserInteractionFinished"
-          }
-        ],
-        "asyncWait": true
-      },
-      {
-        "objectType": "Function",
-        "active": true,
-        "fn": "TcHmi.Functions.Custom.CreateIndirectArrayBinding",
-        "fnParams": [
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:framework#/definitions/Control",
-            "symbolExpression": "%ctrl%ModuleDiagnostics%/ctrl%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:framework#/definitions/ControlPropertyName",
-            "value": "PCBTemperature"
-          },
-          {
-            "objectType": "Symbol",
-            "symbolExpression": "%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::Parts[0]::Modules[0]::PcbTemperatures%/s%"
-          },
-          {
-            "objectType": "Symbol",
-            "valueType": "tchmi:general#/definitions/Number",
-            "symbolExpression": "%ctx%owner::SelectedValue%/ctx%"
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/Boolean",
-            "value": false
-          },
-          {
-            "objectType": "StaticValue",
-            "valueType": "tchmi:general#/definitions/String",
-            "value": "onUserInteractionFinished"
-          }
-        ],
-        "asyncWait": true
-      }
-    ]
-  }
-]
-</script>
-</div>
-
-<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
-[
-  "background-container"
-]
-</script>
-</div>
-<div id="XTSDiagnostics_Header" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="3" data-tchmi-height-unit="%" data-tchmi-left="2" data-tchmi-left-unit="%" data-tchmi-text="XTS Diagnostics" data-tchmi-top="1" data-tchmi-top-unit="%" data-tchmi-word-wrap="True" data-tchmi-right="80" data-tchmi-right-unit="%" data-tchmi-text-font-size="%f%0.8*%ctrl%XTSDiagnostics_Header::RenderedHeight%/ctrl%%/f%" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center">
-
-<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json">
-[
-  "headline-2"
-]
-</script>
-</div>
-</div>
+<script data-tchmi-target-attribute="data-tchmi-class-names" type="application/json"></script></div><script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[ 
+                {   
+                    "event": "%ctx%owner::RenderedWidth%/ctx%", 
+                    "actions": [ 
+                        {  
+                            "objectType": "Function",
+                            "active": true,  
+                            "fn":  "TcHmiResponsiveBehaviour", 
+                            "fnParams": [ 
+                                {  
+                                    "objectType": "Symbol",  
+                                    "valueType":  "tchmi:general#/definitions/String",  
+                                    "symbolExpression":  "%i%MediaQueryList%/i%" 
+                                }, 
+                                {  
+                                    "objectType": "Symbol", 
+                                    "valueType": "tchmi:general#/definitions/String", 
+                                    "symbolExpression": "%i%AffectedControls%/i%" 
+                                }
+                            ], 
+                            "asyncWait": true 
+                        } 
+                    ] 
+                } 
+            ]</script></div>
 </body>
 </html>

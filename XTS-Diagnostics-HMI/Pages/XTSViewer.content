@@ -1,6 +1,6 @@
 <div id="XTSViewer" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%">
 
-<div id="XtsView_1" data-tchmi-type="TcHmi.XTS.Controls.XtsView" data-tchmi-displaydimensions="False" data-tchmi-displaystations="True" data-tchmi-invertdimensions="False" data-tchmi-layout="SystemView" data-tchmi-left="1" data-tchmi-left-unit="%" data-tchmi-lockpan="False" data-tchmi-lockzoom="False" data-tchmi-movertype="SystemView" data-tchmi-refreshrate="16" data-tchmi-selectionmode="Off" data-tchmi-showdriveerrors="True" data-tchmi-showdrivewarnings="True" data-tchmi-targetname="Local" data-tchmi-top="1" data-tchmi-top-unit="%" data-tchmi-viewrotation="0" data-tchmi-right="1" data-tchmi-bottom="1" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%">
+<div id="XtsView_1" data-tchmi-type="TcHmi.XTS.Controls.XtsView" data-tchmi-displaydimensions="True" data-tchmi-displaystations="True" data-tchmi-invertdimensions="False" data-tchmi-layout="SystemView" data-tchmi-left="1" data-tchmi-left-unit="%" data-tchmi-lockpan="False" data-tchmi-lockzoom="False" data-tchmi-movertype="SystemView" data-tchmi-refreshrate="16" data-tchmi-selectionmode="Off" data-tchmi-showdriveerrors="True" data-tchmi-showdrivewarnings="True" data-tchmi-targetname="Local" data-tchmi-top="1" data-tchmi-top-unit="%" data-tchmi-viewrotation="0" data-tchmi-right="1" data-tchmi-bottom="1" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%">
 <script data-tchmi-target-attribute="data-tchmi-toolarray" type="application/json">
 []
 </script>
@@ -45,21 +45,19 @@
 </script>
 <script data-tchmi-target-attribute="data-tchmi-stationoptions" type="application/json">
 {
-  "DisplacementToFirst": 150,
-  "SpaceBetweenStackedStations": 25,
-  "Thickness": 8,
-  "Text": "None",
-  "TextInfoBarPlacement": "Left",
+  "Text": "StationDescription",
   "TextDisplacement": 10,
-  "zIndex": 1000,
+  "TextInfoBarPlacement": "Center",
   "TextOptions": {
+    "FontFamily": "",
+    "FontSize": 76.0,
     "FontStyle": "Normal",
     "FontWeight": "Normal",
-    "FontFamily": "",
-    "HorizontalAlignment": "Left",
-    "VerticalAlignment": "Bottom",
-    "FontSize": 20
-  }
+    "HorizontalAlignment": "Center",
+    "VerticalAlignment": "Bottom"
+  },
+  "Thickness": 8,
+  "zIndex": 1000
 }
 </script>
 <script data-tchmi-target-attribute="data-tchmi-stationmarkeroptions" type="application/json">

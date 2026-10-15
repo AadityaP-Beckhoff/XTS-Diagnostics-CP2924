@@ -11,6 +11,10 @@
       },
       {
         "publishServerExtension": true,
+        "name": "TcHmiEventLogger"
+      },
+      {
+        "publishServerExtension": true,
         "name": "TcHmiLua"
       },
       {
@@ -39,13 +43,12 @@
     "targetDirectory": "",
     "deleteAllFilesBeforePublish": false,
     "deleteExtensionDataBeforePublish": false,
-    "alwaysPublishLocalServerConfiguration": true,
-    "temporaryPublishWithoutServerConfiguration": false,
     "abortOnErrors": true,
     "createPublishLog": false,
+    "createPackageInformation": false,
     "salt": "e649745c66ee41ed96e1ccbac9045828",
     "encryptedTcHmiServerPassword": "oKV8XNig4Zz8/6xeXABnoA==",
-    "tcHmiServerHost": "localhost",
+    "tcHmiServerHost": "10.79.81.12",
     "tcHmiServerPort": "2020",
     "uploadTimeout": "60",
     "connectionTimeout": "5",
@@ -57,7 +60,7 @@
     "launchBrowserAfterPublish": true,
     "createVirtualDirectoriesOnTargetSystem": true,
     "tcHmiServerUserName": "__SystemAdministrator",
-    "tcHmiDestinationUrl": "https://localhost:2020/",
+    "tcHmiDestinationUrl": "https://10.79.81.12:2020/",
     "publishConfiguration": "remote",
     "tcHmiIgnoreCertificateErrors": true
   }

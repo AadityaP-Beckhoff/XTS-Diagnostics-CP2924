@@ -1,32 +1,34 @@
 {
     "devices": {
-        "Device1": {
+        "XTS Module 1": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.2.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.5.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device2": {
+        "XTS Module 2": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.13.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.6.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device3": {
+        "XTS Module 3": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.14.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.7.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device4": {
+        "XTS Module 4": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.15.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.8.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device5": {
+        "XTS Module 5": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.16.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.9.1",
+            "targetNetId": "169.254.63.123.1.1"
         }
     },
+    "eepromReadBudget": 1,
     "runtimeStateCheckTimeout": "PT5S",
+    "timeout": "PT5S",
     "updateIntervals": {
         "MasterList": 1000,
         "MasterOnlineInfo": 1000,

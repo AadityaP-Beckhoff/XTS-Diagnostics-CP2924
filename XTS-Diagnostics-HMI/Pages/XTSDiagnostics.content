@@ -1699,6 +1699,8 @@
   "background-container"
 ]
 </script>
+<div id="StatusIndicator_1" data-tchmi-type="TcHmi.Controls.TcHmiExtendedControls.StatusIndicator" data-tchmi-grid-column-index="1" data-tchmi-grid-row-index="1" data-tchmi-height="10" data-tchmi-height-unit="%" data-tchmi-label-word-wrap="True" data-tchmi-left="8" data-tchmi-left-unit="%" data-tchmi-top="65" data-tchmi-top-unit="%" data-tchmi-width="46" data-tchmi-width-unit="%" data-tchmi-label-position="Left" data-tchmi-label="Mover 1 ID Detection Valid	    " data-tchmi-label-font-size="32" data-tchmi-state-symbol="%s%TcXtsHmiServerExtension.DiagnosticData::Targets[0]::System::ProcessingUnits[0]::IsIdDetectionValid%/s%">
+</div>
 </div>
 <div id="XTSDiagnostics_Header" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="3" data-tchmi-height-unit="%" data-tchmi-left="2" data-tchmi-left-unit="%" data-tchmi-text="XTS Diagnostics" data-tchmi-top="1" data-tchmi-top-unit="%" data-tchmi-word-wrap="True" data-tchmi-right="80" data-tchmi-right-unit="%" data-tchmi-text-font-size="%f%0.8*%ctrl%XTSDiagnostics_Header::RenderedHeight%/ctrl%%/f%" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center">
 

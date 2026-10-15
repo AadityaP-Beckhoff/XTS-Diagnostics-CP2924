@@ -1,29 +1,184 @@
 {
     "devices": {
-        "Device1": {
+        "Panel IO": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.2.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.40.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device2": {
+        "XTS Module 1": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.13.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.5.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device3": {
+        "XTS Module 10": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.14.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.14.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device4": {
+        "XTS Module 11": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.15.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.15.1",
+            "targetNetId": "169.254.63.123.1.1"
         },
-        "Device5": {
+        "XTS Module 12": {
             "enabled": true,
-            "masterNetId": "5.93.160.170.16.1",
-            "targetNetId": "127.0.0.1.1.1"
+            "masterNetId": "169.254.63.123.16.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 13": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.17.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 14": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.18.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 15": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.19.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 16": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.20.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 17": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.21.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 18": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.22.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 19": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.23.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 2": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.6.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 20": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.24.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 21": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.25.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 22": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.26.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 23": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.27.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 24": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.28.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 25": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.29.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 26": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.30.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 27": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.31.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 28": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.32.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 29": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.33.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 3": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.7.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 30": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.34.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 31": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.35.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 32": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.36.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 33": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.37.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 34": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.38.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 35": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.39.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 4": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.8.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 5": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.9.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 6": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.10.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 7": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.11.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 8": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.12.1",
+            "targetNetId": "169.254.63.123.1.1"
+        },
+        "XTS Module 9": {
+            "enabled": true,
+            "masterNetId": "169.254.63.123.13.1",
+            "targetNetId": "169.254.63.123.1.1"
         }
     }
 }
