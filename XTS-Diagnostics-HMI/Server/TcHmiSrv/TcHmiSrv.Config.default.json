@@ -712,7 +712,8 @@
                     "VirtualDeviceName": {
                         "type": "string"
                     }
-                }
+                },
+                "type": "object"
             },
             "TcHmiMdp-Local.TwinCAT": {
                 "properties": {
@@ -5840,6 +5841,16 @@
             },
             "USEMAPPING": true
         },
+        "TcHmiMdp.Local.NetworkInterfaceController.3": {
+            "ACCESS": 3,
+            "DOMAIN": "TcHmiMdp",
+            "DYNAMIC": true,
+            "MAPPING": "Local::NetworkInterfaceController[3]",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/TcHmiMdp-Local.NetworkInterfaceController"
+            },
+            "USEMAPPING": true
+        },
         "TcHmiMdp.Local.TwinCAT.0": {
             "ACCESS": 3,
             "DOMAIN": "TcHmiMdp",
@@ -6789,6 +6800,64 @@
             },
             "USEMAPPING": true
         },
+        "TcXtsHmiServerExtension.DiagnosticData.Targets.0.System.InfoServer": {
+            "ACCESS": 1,
+            "DOMAIN": "TcXtsHmiServerExtension",
+            "DYNAMIC": true,
+            "MAPPING": "DiagnosticData",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "properties": {
+                            "Stations": {
+                                "items": {
+                                    "properties": {
+                                        "Description": {
+                                            "$ref": "tchmi:general#/definitions/String"
+                                        },
+                                        "EndPositionOnPart": {
+                                            "$ref": "tchmi:general#/definitions/DOUBLE"
+                                        },
+                                        "IsEnabled": {
+                                            "$ref": "tchmi:general#/definitions/BOOL"
+                                        },
+                                        "Parts": {
+                                            "items": {
+                                                "$ref": "tchmi:general#/definitions/UINT"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "StartPositionOnPart": {
+                                            "$ref": "tchmi:general#/definitions/DOUBLE"
+                                        },
+                                        "StationColor": {
+                                            "$ref": "tchmi:general#/definitions/UINT"
+                                        },
+                                        "StationId": {
+                                            "$ref": "tchmi:general#/definitions/UINT"
+                                        },
+                                        "StopPositions": {
+                                            "items": {
+                                                "$ref": "tchmi:general#/definitions/DOUBLE"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    {
+                        "function": true
+                    }
+                ]
+            },
+            "SUBSYMBOL_MAPPING": "::Targets[0]::System::InfoServer",
+            "USEMAPPING": true
+        },
         "TcXtsHmiServerExtension.ModuleDriveStates": {
             "ACCESS": 3,
             "DOMAIN": "TcXtsHmiServerExtension",
@@ -7292,6 +7361,7 @@
                 "TcHmiMdp.Local.Mainboard.0": 3,
                 "TcHmiMdp.Local.Memory.0": 3,
                 "TcHmiMdp.Local.NetworkInterfaceController.0": 3,
+                "TcHmiMdp.Local.NetworkInterfaceController.3": 3,
                 "TcHmiMdp.Local.TwinCAT.0": 3,
                 "TcHmiSqliteLogger.Diagnostics": 3,
                 "TcHmiUserManagement.ChangePassword": 3,
@@ -7300,6 +7370,7 @@
                 "TcHmiUserManagement.Get2FAStatus": 3,
                 "TcHmiUserManagement.GetComplexityRules": 3,
                 "TcXtsHmiServerExtension.DiagnosticData": 3,
+                "TcXtsHmiServerExtension.DiagnosticData.Targets.0.System.InfoServer": 3,
                 "TcXtsHmiServerExtension.ModuleDriveStates": 3,
                 "TcXtsHmiServerExtension.MoverPositions": 3,
                 "TcXtsHmiServerExtension.PartTransformations": 3,
